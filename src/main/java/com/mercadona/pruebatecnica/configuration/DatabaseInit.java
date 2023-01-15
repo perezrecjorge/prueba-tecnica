@@ -30,8 +30,8 @@ public class DatabaseInit {
     @PostConstruct
     public void createEjs() {
         log.info("Insertando productos");
-        productoRepository.save(createProducto("12345", "Pan", 100));
-        productoRepository.save(createProducto("54321", "Arroz", 200));
+        productoRepository.save(createProducto("12345", "Pan", 2000));
+        productoRepository.save(createProducto("54321", "Arroz", 1000));
         log.info("Insertando destinos");
         destinoRepository.save(createDestino("0", "Colmenas"));
         destinoRepository.save(createDestino("1", "Mercadona España"));
@@ -43,6 +43,7 @@ public class DatabaseInit {
         destinoRepository.save(createDestino("8", "Almacenes"));
         destinoRepository.save(createDestino("9", "Oficinas Mercadona"));
         log.info("Insertando proveedores");
+        proveedorRepository.save(createProveedor("8437008", "HACENDADO"));
         proveedorRepository.save(createProveedor("1234567", "CANAMA S.L."));
         proveedorRepository.save(createProveedor("7654321", "JUAN S.L."));
     }

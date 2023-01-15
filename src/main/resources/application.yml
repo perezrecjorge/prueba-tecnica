@@ -1,4 +1,9 @@
 spring:
+  cache:
+    caffeine:
+      spec: expireAfterAccess=4320s,maximumSize=1000
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: prueba-tecnica
   datasource:

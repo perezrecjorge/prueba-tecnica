@@ -9,17 +9,16 @@ import org.springframework.context.annotation.Configuration;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
-public class CaffeineConfig {
+public class CaffeineCacheConfig {
 
     @Bean
-    public Caffeine caffeineConfig() {
-        return Caffeine.newBuilder().expireAfterWrite(60, TimeUnit.MINUTES);
+    public CacheManager cacheManager() {
+        CaffeineCacheManager cacheManager = new CaffeineCacheManager("EAN");
+        cacheManager.setCaffeine(caffeineCacheBuilder());
+        return cacheManager;
     }
 
-    @Bean
-    public CacheManager cacheManager(Caffeine caffeine) {
-        CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager();
-        caffeineCacheManager.setCaffeine(caffeine);
-        return caffeineCacheManager;
+    private Caffeine<Object, Object> caffeineCacheBuilder() {
+        return Caffeine.newBuilder().expireAfterWrite(60, TimeUnit.MINUTES);
     }
 }
