@@ -10,6 +10,8 @@ public interface ProveedorService {
 
     ProveedorDto getById(Long id);
 
+    ProveedorDto findByCodigoProveedor(String codigoProveedor);
+
     ProveedorDto save(ProveedorDto destinoDto);
 
     ProveedorDto update(ProveedorDto destinoDto);

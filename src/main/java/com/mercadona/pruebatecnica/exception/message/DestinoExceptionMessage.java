@@ -11,7 +11,8 @@ import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
 public enum DestinoExceptionMessage implements ErrorMessage{
 
     DESTINO_NOT_FOUND_ERROR(NOT_FOUND.value(), "E8-01", "Destino not found", "Destino with id %s not found."),
-    DESTINO_ALREADY_EXISTS_ERROR(UNPROCESSABLE_ENTITY.value(), "E8-02", "Destino already exists", "Destino %s already exist.");
+    DESTINO_CODE_NOT_FOUND_ERROR(NOT_FOUND.value(), "E8-02", "Destino not found", "Destino with codigo %s not found."),
+    DESTINO_ALREADY_EXISTS_ERROR(UNPROCESSABLE_ENTITY.value(), "E8-03", "Destino already exists", "Destino %s already exist.");
 
     private final int httpCode;
 

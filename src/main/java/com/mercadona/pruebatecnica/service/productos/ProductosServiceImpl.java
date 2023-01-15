@@ -30,6 +30,12 @@ public class ProductosServiceImpl implements ProductosService {
     }
 
     @Override
+    public ProductoDto findByCodigoProducto(String codigoProducto) {
+        ProductoEntity productoEntity = productoRepository.findByCodigoProducto(codigoProducto).orElseThrow(() -> new NotFoundException(ProductoExceptionMessage.PRODUCT_CODE_NOT_FOUND_ERROR, codigoProducto));
+        return ProductoMapper.mapProductoDtoFromEntity(productoEntity);
+    }
+
+    @Override
     public ProductoDto save(ProductoDto productoDto) {
         ProductoEntity productoEntity = productoRepository.save(ProductoMapper.mapProductoEntityFromDTO(productoDto));
         return ProductoMapper.mapProductoDtoFromEntity(productoEntity);

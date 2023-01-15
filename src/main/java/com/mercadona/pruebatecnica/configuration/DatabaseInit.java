@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.transaction.Transactional;
 
 @Slf4j
 @Component
@@ -25,14 +26,22 @@ public class DatabaseInit {
     @Autowired
     public ProveedorRepository proveedorRepository;
 
+    @Transactional
     @PostConstruct
     public void createEjs() {
         log.info("Insertando productos");
         productoRepository.save(createProducto("12345", "Pan", 100));
         productoRepository.save(createProducto("54321", "Arroz", 200));
         log.info("Insertando destinos");
-        destinoRepository.save(createDestino("1", "Mercadona España", "Sevilla"));
-        destinoRepository.save(createDestino("6", "Mercadona Portugal", "Lisboa"));
+        destinoRepository.save(createDestino("0", "Colmenas"));
+        destinoRepository.save(createDestino("1", "Mercadona España"));
+        destinoRepository.save(createDestino("2", "Mercadona España"));
+        destinoRepository.save(createDestino("3", "Mercadona España"));
+        destinoRepository.save(createDestino("4", "Mercadona España"));
+        destinoRepository.save(createDestino("5", "Mercadona España"));
+        destinoRepository.save(createDestino("6", "Mercadona Portugal"));
+        destinoRepository.save(createDestino("8", "Almacenes"));
+        destinoRepository.save(createDestino("9", "Oficinas Mercadona"));
         log.info("Insertando proveedores");
         proveedorRepository.save(createProveedor("1234567", "CANAMA S.L."));
         proveedorRepository.save(createProveedor("7654321", "JUAN S.L."));
@@ -42,8 +51,8 @@ public class DatabaseInit {
         return ProductoEntity.builder().codigoProducto(codigo).nombre(nombre).cantidad(cantidad).build();
     }
 
-    private DestinoEntity createDestino(String codigo, String nombre, String ciudad) {
-        return DestinoEntity.builder().codigoDestino(codigo).destino(nombre).ciudad(ciudad).build();
+    private DestinoEntity createDestino(String codigoDestino, String nombre) {
+        return DestinoEntity.builder().codigoDestino(codigoDestino).destino(nombre).build();
     }
 
     private ProveedorEntity createProveedor(String codigo, String nombre) {

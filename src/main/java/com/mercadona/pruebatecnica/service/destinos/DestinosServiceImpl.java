@@ -6,7 +6,6 @@ import com.mercadona.pruebatecnica.exception.NotFoundException;
 import com.mercadona.pruebatecnica.exception.message.DestinoExceptionMessage;
 import com.mercadona.pruebatecnica.mapper.DestinoMapper;
 import com.mercadona.pruebatecnica.repository.DestinoRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class DestinosServiceImpl implements DestinosService {
 
     @Autowired
@@ -28,6 +26,12 @@ public class DestinosServiceImpl implements DestinosService {
     @Override
     public DestinoDto getById(Long id) {
         DestinoEntity destinoEntity = destinoRepository.findById(id).orElseThrow(() -> new NotFoundException(DestinoExceptionMessage.DESTINO_NOT_FOUND_ERROR, id));
+        return DestinoMapper.mapDestinoDtoFromEntity(destinoEntity);
+    }
+
+    @Override
+    public DestinoDto findByCodigoDestino(String codigoDestino) {
+        DestinoEntity destinoEntity = destinoRepository.findByCodigoDestino(codigoDestino).orElseThrow(() -> new NotFoundException(DestinoExceptionMessage.DESTINO_CODE_NOT_FOUND_ERROR, codigoDestino));
         return DestinoMapper.mapDestinoDtoFromEntity(destinoEntity);
     }
 

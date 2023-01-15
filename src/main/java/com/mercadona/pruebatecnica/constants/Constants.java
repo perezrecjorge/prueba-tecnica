@@ -29,5 +29,11 @@ public class Constants {
             public final String PROVEEDOR_ID = ID;
         }
 
+        @UtilityClass
+        public class EAN {
+            public final String EAN = API_VERSION + "/ean";
+            public final String EAN_ID = "/{codigoEAN}";
+        }
+
     }
 }

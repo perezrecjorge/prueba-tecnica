@@ -24,6 +24,4 @@ public class DestinoEntity {
 
     private String destino;
 
-    private String ciudad;
-
 }

@@ -13,6 +13,4 @@ public class DestinoDto {
 
     private String destino;
 
-    private String ciudad;
-
 }

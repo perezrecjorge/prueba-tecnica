@@ -11,6 +11,7 @@ import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
 public enum ProductoExceptionMessage implements ErrorMessage{
 
     PRODUCT_NOT_FOUND_ERROR(NOT_FOUND.value(), "E8-01", "Product not found", "Product with id %s not found."),
+    PRODUCT_CODE_NOT_FOUND_ERROR(NOT_FOUND.value(), "E8-01", "Product not found", "Product with codigo %s not found."),
     PRODUCT_ALREADY_EXISTS_ERROR(UNPROCESSABLE_ENTITY.value(), "E8-02", "Product already exists", "Product %s already exist.");
 
     private final int httpCode;

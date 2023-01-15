@@ -10,6 +10,8 @@ public interface DestinosService {
 
     DestinoDto getById(Long id);
 
+    DestinoDto findByCodigoDestino(String codigoDestino);
+
     DestinoDto save(DestinoDto destinoDto);
 
     DestinoDto update(DestinoDto destinoDto);

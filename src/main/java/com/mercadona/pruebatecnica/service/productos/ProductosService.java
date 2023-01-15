@@ -10,10 +10,14 @@ public interface ProductosService {
 
     ProductoDto getById(Long id);
 
+    ProductoDto findByCodigoProducto(String codigoProducto);
+
     ProductoDto save(ProductoDto destinoDto);
 
     ProductoDto update(ProductoDto destinoDto);
 
     void delete(Long id);
+
+
 
 }

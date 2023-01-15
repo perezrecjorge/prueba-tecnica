@@ -12,7 +12,6 @@ public class DestinoMapper {
                 .id(destinoEntity.getId())
                 .codigoDestino(destinoEntity.getCodigoDestino())
                 .destino(destinoEntity.getDestino())
-                .ciudad(destinoEntity.getCiudad())
                 .build();
     }
 
@@ -21,7 +20,6 @@ public class DestinoMapper {
                 .id(destinoDto.getId())
                 .codigoDestino(destinoDto.getCodigoDestino())
                 .destino(destinoDto.getDestino())
-                .ciudad(destinoDto.getCiudad())
                 .build();
     }
 
