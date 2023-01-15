@@ -1,7 +1,7 @@
-package com.mercadona.pruebatecnica.controller.destinos;
+package com.mercadona.pruebatecnica.controller.proveedor;
 
 import com.mercadona.pruebatecnica.constants.Constants;
-import com.mercadona.pruebatecnica.dto.DestinoDto;
+import com.mercadona.pruebatecnica.dto.ProveedorDto;
 import com.mercadona.pruebatecnica.exception.model.ErrorResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -20,28 +20,28 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.validation.Valid;
 import java.util.List;
 
-@RequestMapping(Constants.Endpoint.Destino.DESTINOS)
-@Api(tags = "Destinos")
-public interface DestinosApi {
+@RequestMapping(Constants.Endpoint.Proveedor.PROVEEDORES)
+@Api(tags = "Proveedores")
+public interface ProveedoresApi {
 
-    @ApiOperation(value = "List destinos with detailed data", notes = "List destinos with a max size per request", nickname = "listDestinos")
+    @ApiOperation(value = "List proveedores with detailed data", notes = "List proveedores with a max size per request", nickname = "listProveedores")
     @ApiResponses({@ApiResponse(code = 400, message = "BAD REQUEST", response = ErrorResponse.class),
             @ApiResponse(code = 401, message = "UNAUTHORIZED", response = ErrorResponse.class),
             @ApiResponse(code = 403, message = "FORBIDDEN", response = ErrorResponse.class),
             @ApiResponse(code = 500, message = "INTERNAL SERVER ERROR", response = ErrorResponse.class)})
     @GetMapping
-    List<DestinoDto> getAllDestinos();
+    List<ProveedorDto> getAllProductos();
 
-    @ApiOperation(value = "Get destino data by id", notes = "Get the detailed data for a destino by id", nickname = "getDestinoById")
+    @ApiOperation(value = "Get proveedor data by id", notes = "Get the detailed data for a proveedor by id", nickname = "getProveedorById")
     @ApiResponses({@ApiResponse(code = 400, message = "BAD REQUEST", response = ErrorResponse.class),
             @ApiResponse(code = 401, message = "UNAUTHORIZED", response = ErrorResponse.class),
             @ApiResponse(code = 403, message = "FORBIDDEN", response = ErrorResponse.class),
             @ApiResponse(code = 404, message = "NOT FOUND", response = ErrorResponse.class),
             @ApiResponse(code = 500, message = "INTERNAL SERVER ERROR", response = ErrorResponse.class)})
-    @GetMapping(Constants.Endpoint.Destino.DESTINOS_ID)
-    DestinoDto getDestinoById(@PathVariable Long id);
+    @GetMapping(Constants.Endpoint.Proveedor.PROVEEDORES)
+    ProveedorDto getProductoById(@PathVariable long id);
 
-    @ApiOperation(value = "Create destino", notes = "Create a new destino")
+    @ApiOperation(value = "Create proveedor", notes = "Create a new proveedor")
     @ApiResponses({@ApiResponse(code = 400, message = "BAD REQUEST", response = ErrorResponse.class),
             @ApiResponse(code = 401, message = "UNAUTHORIZED", response = ErrorResponse.class),
             @ApiResponse(code = 403, message = "FORBIDDEN", response = ErrorResponse.class),
@@ -49,9 +49,9 @@ public interface DestinosApi {
             @ApiResponse(code = 500, message = "INTERNAL SERVER ERROR", response = ErrorResponse.class)})
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    DestinoDto save(@RequestBody @Valid DestinoDto request);
+    ProveedorDto save(@RequestBody @Valid ProveedorDto proveedorDto);
 
-    @ApiOperation(value = "Update destino", notes = "Update an existing destino")
+    @ApiOperation(value = "Update proveedor", notes = "Update an existing proveedor")
     @ApiResponses({@ApiResponse(code = 400, message = "BAD REQUEST", response = ErrorResponse.class),
             @ApiResponse(code = 401, message = "UNAUTHORIZED", response = ErrorResponse.class),
             @ApiResponse(code = 403, message = "FORBIDDEN", response = ErrorResponse.class),
@@ -59,16 +59,16 @@ public interface DestinosApi {
             @ApiResponse(code = 500, message = "INTERNAL SERVER ERROR", response = ErrorResponse.class)})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping
-    DestinoDto update( @RequestBody @Valid DestinoDto destinoDto);
+    ProveedorDto update(@RequestBody @Valid ProveedorDto proveedorDto);
 
-    @ApiOperation(value = "Delete destino", notes = "Delete an existing destino")
+    @ApiOperation(value = "Delete proveedor", notes = "Delete an existing proveedor")
     @ApiResponses({@ApiResponse(code = 400, message = "BAD REQUEST", response = ErrorResponse.class),
             @ApiResponse(code = 401, message = "UNAUTHORIZED", response = ErrorResponse.class),
             @ApiResponse(code = 403, message = "FORBIDDEN", response = ErrorResponse.class),
             @ApiResponse(code = 404, message = "NOT FOUND", response = ErrorResponse.class),
             @ApiResponse(code = 500, message = "INTERNAL SERVER ERROR", response = ErrorResponse.class)})
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping(Constants.Endpoint.Destino.DESTINOS_ID)
+    @DeleteMapping(Constants.Endpoint.Proveedor.PROVEEDOR_ID)
     void delete(@PathVariable long id);
 
 }
