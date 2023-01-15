@@ -9,9 +9,12 @@ import com.mercadona.pruebatecnica.service.productos.ProductosService;
 import com.mercadona.pruebatecnica.service.proveedor.ProveedorService;
 import com.mercadona.pruebatecnica.util.Util;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
+@CacheConfig(cacheNames = {"EAN"})
 @RequiredArgsConstructor
 public class EanServiceImpl implements EanService {
 
@@ -22,6 +25,7 @@ public class EanServiceImpl implements EanService {
     private final DestinosService destinosService;
 
     @Override
+    @Cacheable(value = "EAN", key = "{#codigoEAN}")
     public SalidaConsultaEAN getInfoByEAN(String codigoEAN) {
 
         ProductoDto productoDto = productosService.findByCodigoProducto(Util.obtenerCodigoProductoFromEAN(codigoEAN));
